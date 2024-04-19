@@ -15,6 +15,8 @@ const CocktailData = ({ searchResult, searchResultKey }) => {
   const { searchResultsLength } = React.useContext(CocktailContext);
   const { darkMode } = React.useContext(DarkLightModeContext);
 
+  console.log(searchResult);
+
   return (
     <CocktailResultsContainer container rowSpacing={4}>
       {(mainImageLoading || youtubeImageLoading) && (
@@ -79,7 +81,7 @@ const CocktailData = ({ searchResult, searchResultKey }) => {
         {searchResult.youtubeData && (
           <CocktailVideoTutorialLinkContainer item xs={12} loading={youtubeImageLoading}>
             <CocktailVideoTutorialLink
-              href={searchResult.youtubeData.url}
+              href={searchResult.youtubeData.link}
               loading={youtubeImageLoading}
               target='_blank'
               rel='noreferrer'
@@ -91,7 +93,7 @@ const CocktailData = ({ searchResult, searchResultKey }) => {
                 onLoad={() => {
                   setYoutubeImageLoading(false);
                 }}
-                src={searchResult.youtubeData.bestThumbnail.url}
+                src={searchResult.youtubeData.thumbnail}
               />
               <CocktailVideoTutorialIconContainer>
                 {youtubeImageLoading ? (

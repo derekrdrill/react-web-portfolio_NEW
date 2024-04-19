@@ -157,14 +157,14 @@ export const getCocktailsWithYoutubeData = async (cocktail, cocktailDispatch) =>
 
   const result = await axios(options).catch(e => console.log(e));
 
-  cocktail.youtubeData = result.data.items[0];
+  cocktail.youtubeData = result.data.videos[0];
 
   cocktailDispatch({
     type: 'SET_LOADING',
     loading: false,
   });
 
-  return result.data.items[0];
+  return result.data.videos[0];
 };
 
 export const handleSearchBarChange = async (
